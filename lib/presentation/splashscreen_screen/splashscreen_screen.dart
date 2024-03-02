@@ -6,9 +6,6 @@ import 'package:wallet_wise/presentation/onboardingone_screen/onboardingone_scre
 import 'package:wallet_wise/presentation/onboardingthree_screen/onboardingthree_screen.dart';
 import 'package:wallet_wise/presentation/onboardingtwo_screen/onboardingtwo_screen.dart';
 import '../../widgets/custom_elevated_button.dart';
-import '../onboardingone_screen/models/takefullcontrol_item_model.dart';
-import '../onboardingone_screen/provider/onboardingone_provider.dart';
-import '../onboardingone_screen/widgets/takefullcontrol_item_widget.dart';
 import 'provider/splashscreen_provider.dart';
 
 class SplashscreenScreen extends StatefulWidget {
@@ -92,7 +89,7 @@ class SplashscreenScreenState extends State<SplashscreenScreen> {
             alignment: Alignment.centerLeft,
             child: Container(
               height: 102.v,
-              width: 500.h,
+              width: 102.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(56),
                 boxShadow: [

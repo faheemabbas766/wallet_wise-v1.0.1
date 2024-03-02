@@ -4,6 +4,7 @@ import 'package:wallet_wise/widgets/app_bar/appbar_subtitle_seven.dart';
 import 'package:wallet_wise/widgets/app_bar/appbar_title.dart';
 import 'package:wallet_wise/widgets/app_bar/appbar_trailing_iconbutton.dart';
 import 'package:wallet_wise/widgets/custom_elevated_button.dart';
+import '../../global/global.dart';
 import 'widgets/ninetyfive_item_widget.dart';
 import 'models/ninetyfive_item_model.dart';
 import 'widgets/eightyone_item_widget.dart';
@@ -42,25 +43,27 @@ class HomepagePageState extends State<HomepagePage> {
         body: Container(
           width: double.maxFinite,
           decoration: AppDecoration.fillWhiteA,
-          child: Column(
-            children: [
-              _buildTotalBalance(context),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 8.h),
-                child: Column(
-                  children: [
-                    SizedBox(height: 17.v),
-                    _buildFrameEight(context),
-                    SizedBox(height: 6.v),
-                    _buildNinetyFive(context),
-                    SizedBox(height: 21.v),
-                    _buildFrameFourteen(context),
-                    SizedBox(height: 9.v),
-                    _buildEightyOne(context),
-                  ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                _buildTotalBalance(context),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 8.h),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 17.v),
+                      _buildFrameEight(context),
+                      SizedBox(height: 6.v),
+                      _buildNinetyFive(context),
+                      SizedBox(height: 21.v),
+                      _buildFrameFourteen(context),
+                      SizedBox(height: 9.v),
+                      _buildEightyOne(context),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -249,7 +252,7 @@ class HomepagePageState extends State<HomepagePage> {
                     text: "lbl_good_morning".tr,
                   ),
                   AppbarTitle(
-                    text: "lbl_saad".tr,
+                    text: userData!.name,
                     margin: EdgeInsets.only(right: 79.h),
                   ),
                 ],

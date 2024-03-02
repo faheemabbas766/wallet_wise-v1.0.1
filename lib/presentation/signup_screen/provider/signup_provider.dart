@@ -42,7 +42,7 @@ class SignupProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void signup() async {
+  void signup(BuildContext context) async {
     String name = nameController.text;
     String email = emailController.text;
     String password = passwordController.text;
@@ -62,5 +62,7 @@ class SignupProvider extends ChangeNotifier {
     threeController.clear();
     countryController.clear();
     cityController.clear();
+
+    Navigator.of(context).pushNamed(AppRoutes.otpScreen);
   }
 }

@@ -393,8 +393,8 @@ class SignupScreenState extends State<SignupScreen> {
   /// Section Widget
   Widget _buildSignUp(BuildContext context, SignupProvider provider) {
     return CustomElevatedButton(
-      onPressed: (){
-        Navigator.of(context).pushNamed(AppRoutes.otpScreen);
+      onPressed: () {
+        provider.signup(context);
       },
       height: 34.v,
       width: 179.h,
@@ -402,9 +402,6 @@ class SignupScreenState extends State<SignupScreen> {
       buttonStyle: CustomButtonStyles.fillYellow,
       buttonTextStyle: CustomTextStyles.titleSmallPoppinsPrimary,
       alignment: Alignment.center,
-      onPressed: () {
-        provider.signup();
-      },
     );
   }
 }
