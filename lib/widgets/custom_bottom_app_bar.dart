@@ -19,16 +19,16 @@ class CustomBottomAppBarState extends State<CustomBottomAppBar> {
         type: BottomBarEnum.Home,
         isSelected: true),
     BottomMenuModel(
+      icon: ImageConstant.imageNotFound,
+      activeIcon: ImageConstant.imageNotFound,
+      title: "".tr,
+      type: BottomBarEnum.Transaction,
+    ),
+    BottomMenuModel(
       icon: ImageConstant.imgNavTransaction,
       activeIcon: ImageConstant.imgNavTransaction,
       title: "lbl_transaction".tr,
       type: BottomBarEnum.Transaction,
-    ),
-    BottomMenuModel(
-      icon: ImageConstant.imgAddOutline1,
-      activeIcon: ImageConstant.imgAddOutline1,
-      title: "lbl_home".tr,
-      type: BottomBarEnum.Home,
     ),
     BottomMenuModel(
       icon: ImageConstant.imgNavBudget,
