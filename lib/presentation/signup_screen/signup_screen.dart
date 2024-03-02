@@ -42,11 +42,11 @@ class SignupScreenState extends State<SignupScreen> {
           height: SizeUtils.height,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              begin: Alignment(0.5, 0),
-              end: Alignment(0.5, 1),
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
               colors: [
                 appTheme.yellow800,
-                theme.colorScheme.primary.withOpacity(0),
+                theme.colorScheme.primary.withOpacity(1),
               ],
             ),
           ),
@@ -65,7 +65,7 @@ class SignupScreenState extends State<SignupScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 87.v),
+                    SizedBox(height: 77.v),
                     Align(
                       alignment: Alignment.center,
                       child: RichText(
@@ -84,7 +84,7 @@ class SignupScreenState extends State<SignupScreen> {
                         textAlign: TextAlign.left,
                       ),
                     ),
-                    SizedBox(height: 28.v),
+                    SizedBox(height: 18.v),
                     SizedBox(
                       width: 156.h,
                       child: Text(
@@ -94,7 +94,7 @@ class SignupScreenState extends State<SignupScreen> {
                         style: CustomTextStyles.headlineMediumWhiteA700,
                       ),
                     ),
-                    SizedBox(height: 1.v),
+                    SizedBox(height: 10.v),
                     Padding(
                       padding: EdgeInsets.only(left: 3.h),
                       child: Text(
@@ -103,7 +103,7 @@ class SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     _buildName(context),
-                    SizedBox(height: 9.v),
+                    SizedBox(height: 10.v),
                     Padding(
                       padding: EdgeInsets.only(left: 3.h),
                       child: Text(
@@ -116,7 +116,7 @@ class SignupScreenState extends State<SignupScreen> {
                     _buildFour(context),
                     SizedBox(height: 10.v),
                     _buildFour1(context),
-                    SizedBox(height: 11.v),
+                    SizedBox(height: 10.v),
                     Padding(
                       padding: EdgeInsets.only(left: 3.h),
                       child: Text(
@@ -155,13 +155,15 @@ class SignupScreenState extends State<SignupScreen> {
                             style: CustomTextStyles.bodyMediumNotoSansWhiteA700,
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 19.h),
-                            child: Text(
-                              "lbl_log_in2".tr,
-                              style: CustomTextStyles
-                                  .titleSmallNotoSansYellow800
-                                  .copyWith(
-                                decoration: TextDecoration.underline,
+                            padding: EdgeInsets.only(left: 10.h),
+                            child: TextButton(
+                              onPressed: (){
+                                Navigator.of(context).pushNamed(AppRoutes.loginScreen);
+                              },
+                              child: Text(
+                                "lbl_log_in2".tr,
+                                style: CustomTextStyles
+                                    .titleSmallNotoSansYellow800,
                               ),
                             ),
                           ),
@@ -232,7 +234,7 @@ class SignupScreenState extends State<SignupScreen> {
   /// Section Widget
   Widget _buildFour(BuildContext context) {
     return SizedBox(
-      height: 56.v,
+      height: 66.v,
       width: 351.h,
       child: Stack(
         alignment: Alignment.bottomCenter,
@@ -282,7 +284,7 @@ class SignupScreenState extends State<SignupScreen> {
   /// Section Widget
   Widget _buildFour1(BuildContext context) {
     return SizedBox(
-      height: 56.v,
+      height: 66.v,
       width: 351.h,
       child: Stack(
         alignment: Alignment.bottomCenter,
@@ -290,11 +292,9 @@ class SignupScreenState extends State<SignupScreen> {
           Align(
             alignment: Alignment.topLeft,
             child: Container(
-              width: 38.h,
               margin: EdgeInsets.only(left: 3.h),
               child: Text(
                 "lbl_country".tr,
-                maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: CustomTextStyles.titleMediumNotoSansWhiteA700,
               ),

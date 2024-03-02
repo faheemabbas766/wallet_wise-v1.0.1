@@ -1,7 +1,6 @@
 import 'package:wallet_wise/widgets/custom_text_form_field.dart';
 import 'package:wallet_wise/core/utils/validation_functions.dart';
 import 'package:wallet_wise/widgets/custom_elevated_button.dart';
-import 'models/reset_password_model.dart';
 import 'package:flutter/material.dart';
 import 'package:wallet_wise/core/app_export.dart';
 import 'provider/reset_password_provider.dart';
@@ -42,8 +41,8 @@ class ResetPasswordScreenState extends State<ResetPasswordScreen> {
           height: SizeUtils.height,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              begin: Alignment(0.5, 0),
-              end: Alignment(0.5, 1),
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
               colors: [
                 appTheme.yellow800,
                 appTheme.gray900,
@@ -60,7 +59,7 @@ class ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 width: double.maxFinite,
                 padding: EdgeInsets.only(
                   left: 13.h,
-                  top: 69.v,
+                  top: 129.v,
                   right: 13.h,
                 ),
                 child: Column(
@@ -192,6 +191,9 @@ class ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     ),
                     SizedBox(height: 36.v),
                     CustomElevatedButton(
+                      onPressed: (){
+                        Navigator.of(context).pushNamed(AppRoutes.loginScreen);
+                      },
                       height: 40.v,
                       width: 200.h,
                       text: "lbl_reset_password2".tr,
@@ -215,12 +217,15 @@ class ResetPasswordScreenState extends State<ResetPasswordScreen> {
                             ),
                             Padding(
                               padding: EdgeInsets.only(left: 12.h),
-                              child: Text(
-                                "lbl_login".tr,
-                                style: CustomTextStyles
-                                    .titleSmallNotoSansYellow800
-                                    .copyWith(
-                                  decoration: TextDecoration.underline,
+                              child: TextButton(
+                                onPressed: (){
+                                  Navigator.of(context).pushNamed(AppRoutes.loginScreen);
+                                },
+                                child: Text(
+                                  "lbl_login".tr,
+                                  style: CustomTextStyles
+                                      .titleSmallNotoSansYellow800
+                                      .copyWith(),
                                 ),
                               ),
                             ),

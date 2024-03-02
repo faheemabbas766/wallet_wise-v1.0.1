@@ -34,15 +34,15 @@ class EmailSentScreenState extends State<EmailSentScreen> {
           width: double.maxFinite,
           padding: EdgeInsets.symmetric(
             horizontal: 12.h,
-            vertical: 50.v,
+            vertical: 30.v,
           ),
           child: Column(
             children: [
-              SizedBox(height: 30.v),
+              SizedBox(height: 90.v),
               CustomImageView(
                 imagePath: ImageConstant.imgIlustration,
-                height: 216.v,
-                width: 312.h,
+                height: 200.v,
+                width: 300.h,
                 radius: BorderRadius.circular(
                   40.h,
                 ),
@@ -54,7 +54,7 @@ class EmailSentScreenState extends State<EmailSentScreen> {
               ),
               SizedBox(height: 20.v),
               Container(
-                width: 270.h,
+                width: 290.h,
                 margin: EdgeInsets.only(
                   left: 40.h,
                   right: 39.h,
@@ -69,11 +69,17 @@ class EmailSentScreenState extends State<EmailSentScreen> {
               ),
               Spacer(),
               CustomElevatedButton(
+                onPressed: (){
+                  Navigator.of(context).pushNamed(AppRoutes.resetPasswordScreen);
+                },
                 text: "lbl_continue".tr,
                 margin: EdgeInsets.only(left: 8.h),
               ),
               SizedBox(height: 16.v),
               CustomElevatedButton(
+                onPressed: (){
+                  Navigator.of(context).pushNamed(AppRoutes.loginScreen);
+                },
                 text: "lbl_back_to_login".tr,
                 margin: EdgeInsets.only(left: 8.h),
               ),
