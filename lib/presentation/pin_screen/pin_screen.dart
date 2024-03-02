@@ -1,16 +1,11 @@
-import 'package:wallet_wise/widgets/custom_pin_code_text_field.dart';
-import 'widgets/pin_item_widget.dart';
-import 'models/pin_item_model.dart';
-import 'models/pin_model.dart';
 import 'package:flutter/material.dart';
 import 'package:wallet_wise/core/app_export.dart';
-import 'provider/pin_provider.dart';
-
+import 'package:wallet_wise/presentation/pin_screen/provider/pin_provider.dart';
+import '../../widgets/custom_pin_code_text_field.dart';
+import 'widgets/pin_item_widget.dart';
+import 'models/pin_item_model.dart';
 class PinScreen extends StatefulWidget {
-  const PinScreen({Key? key})
-      : super(
-          key: key,
-        );
+  const PinScreen({Key? key}) : super(key: key);
 
   @override
   PinScreenState createState() => PinScreenState();
@@ -26,6 +21,10 @@ class PinScreenState extends State<PinScreen> {
   @override
   void initState() {
     super.initState();
+    // Navigate to the next screen after 5 seconds
+    Future.delayed(Duration(seconds: 5), () {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NextScreen()));
+    });
   }
 
   @override
@@ -36,10 +35,7 @@ class PinScreenState extends State<PinScreen> {
         resizeToAvoidBottomInset: false,
         body: Container(
           width: double.maxFinite,
-          padding: EdgeInsets.symmetric(
-            horizontal: 10.h,
-            vertical: 22.v,
-          ),
+          padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 22.v),
           child: Column(
             children: [
               SizedBox(height: 25.v),
@@ -47,24 +43,18 @@ class PinScreenState extends State<PinScreen> {
                 "msg_let_s_setup_your2".tr,
                 style: CustomTextStyles.titleLargeGray50,
               ),
-              SizedBox(height: 87.v),
+              SizedBox(height: 57.v),
               Padding(
-                padding: EdgeInsets.only(
-                  left: 90.h,
-                  right: 89.h,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 10.h),
                 child: Selector<PinProvider, TextEditingController?>(
-                  selector: (
-                    context,
-                    provider,
-                  ) =>
-                      provider.otpController,
+                  selector: (context, provider) => provider.otpController,
                   builder: (context, otpController, child) {
                     return CustomPinCodeTextField(
                       context: context,
                       controller: otpController,
                       onChanged: (value) {
-                        otpController?.text = value;
+                        Provider.of<PinProvider>(context, listen: false)
+                            .otpController.text += value;
                       },
                     );
                   },
@@ -81,14 +71,13 @@ class PinScreenState extends State<PinScreen> {
     );
   }
 
-  /// Section Widget
   Widget _buildPin(BuildContext context) {
     return Consumer<PinProvider>(
       builder: (context, provider, child) {
         return GridView.builder(
           shrinkWrap: true,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            mainAxisExtent: 91.v,
+            mainAxisExtent: 100.v,
             crossAxisCount: 3,
             mainAxisSpacing: 26.h,
             crossAxisSpacing: 26.h,
@@ -97,43 +86,29 @@ class PinScreenState extends State<PinScreen> {
           itemCount: provider.pinModelObj.pinItemList.length,
           itemBuilder: (context, index) {
             PinItemModel model = provider.pinModelObj.pinItemList[index];
-            return PinItemWidget(
-              model,
-            );
+            return PinItemWidget(model);
           },
         );
       },
     );
   }
 
-  /// Section Widget
   Widget _buildClose(BuildContext context) {
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
-        padding: EdgeInsets.only(
-          left: 15.h,
-          right: 30.h,
-        ),
+        padding: EdgeInsets.only(left: 15.h, right: 30.h),
         child: Row(
           children: [
             CustomImageView(
               imagePath: ImageConstant.imgClose,
               height: 34.v,
               width: 51.h,
-              margin: EdgeInsets.only(
-                top: 29.v,
-                bottom: 25.v,
-              ),
+              margin: EdgeInsets.only(top: 29.v, bottom: 25.v),
             ),
-            Spacer(
-              flex: 54,
-            ),
+            Spacer(flex: 54),
             Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: 35.h,
-                vertical: 15.v,
-              ),
+              padding: EdgeInsets.symmetric(horizontal: 35.h, vertical: 15.v),
               decoration: AppDecoration.fillYellow800.copyWith(
                 borderRadius: BorderRadiusStyle.roundedBorder40,
               ),
@@ -142,20 +117,29 @@ class PinScreenState extends State<PinScreen> {
                 style: theme.textTheme.displayMedium,
               ),
             ),
-            Spacer(
-              flex: 45,
-            ),
+            Spacer(flex: 45),
             CustomImageView(
               imagePath: ImageConstant.imgArrowLeft,
               height: 28.v,
               width: 43.h,
-              margin: EdgeInsets.only(
-                top: 32.v,
-                bottom: 28.v,
-              ),
+              margin: EdgeInsets.only(top: 32.v, bottom: 28.v),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class NextScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Next Screen'),
+      ),
+      body: Center(
+        child: Text('This is the next screen'),
       ),
     );
   }

@@ -3,7 +3,6 @@ import 'package:wallet_wise/core/utils/validation_functions.dart';
 import 'package:wallet_wise/utils/firebase_db.dart';
 import 'package:wallet_wise/widgets/custom_text_form_field.dart';
 import 'package:wallet_wise/widgets/custom_elevated_button.dart';
-import 'models/signup_model.dart';
 import 'package:flutter/material.dart';
 import 'package:wallet_wise/core/app_export.dart';
 import 'provider/signup_provider.dart';
@@ -394,6 +393,9 @@ class SignupScreenState extends State<SignupScreen> {
   /// Section Widget
   Widget _buildSignUp(BuildContext context, SignupProvider provider) {
     return CustomElevatedButton(
+      onPressed: (){
+        Navigator.of(context).pushNamed(AppRoutes.otpScreen);
+      },
       height: 34.v,
       width: 179.h,
       text: "lbl_sign_up".tr,

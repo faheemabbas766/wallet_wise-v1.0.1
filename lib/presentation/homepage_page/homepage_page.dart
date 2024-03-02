@@ -6,7 +6,6 @@ import 'package:wallet_wise/widgets/app_bar/appbar_trailing_iconbutton.dart';
 import 'package:wallet_wise/widgets/custom_elevated_button.dart';
 import 'widgets/ninetyfive_item_widget.dart';
 import 'models/ninetyfive_item_model.dart';
-import 'models/homepage_model.dart';
 import 'widgets/eightyone_item_widget.dart';
 import 'models/eightyone_item_model.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
@@ -14,7 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:wallet_wise/core/app_export.dart';
 import 'provider/homepage_provider.dart';
 
-// ignore_for_file: must_be_immutable
 class HomepagePage extends StatefulWidget {
   const HomepagePage({Key? key})
       : super(

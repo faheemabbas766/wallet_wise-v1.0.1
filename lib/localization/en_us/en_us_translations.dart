@@ -69,7 +69,7 @@ final Map<String, String> enUs = {
   // Account Setup Screen
   "lbl_let_s_go": "Let’s go",
   "msg_account_can_be_your":
-      "Account can be your bank, credit card or \nyour wallet.",
+      "Account can be your bank, credit card or your wallet.",
   "msg_let_s_setup_your": "Let’s setup your account!",
 
   // Pin Screen

@@ -53,11 +53,11 @@ class AccountSetupScreenState extends State<AccountSetupScreen> {
               ),
               SizedBox(height: 36.v),
               Container(
-                width: 272.h,
+                width: 274.h,
                 margin: EdgeInsets.only(right: 68.h),
                 child: Text(
                   "msg_account_can_be_your".tr,
-                  maxLines: 2,
+                  maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   style: CustomTextStyles.titleSmallBluegray900.copyWith(
                     height: 1.29,
@@ -65,22 +65,21 @@ class AccountSetupScreenState extends State<AccountSetupScreen> {
                 ),
               ),
               SizedBox(height: 5.v),
+              Spacer(),
+              CustomElevatedButton(
+                onPressed: (){
+                  Navigator.of(context).pushNamed(AppRoutes.pinScreen);
+                },
+                text: "lbl_let_s_go".tr,
+                margin: EdgeInsets.only(
+                  left: 16.h,
+                  right: 16.h,
+                  bottom: 50.v,
+                ),
+              )
             ],
           ),
         ),
-        bottomNavigationBar: _buildLetsGo(context),
-      ),
-    );
-  }
-
-  /// Section Widget
-  Widget _buildLetsGo(BuildContext context) {
-    return CustomElevatedButton(
-      text: "lbl_let_s_go".tr,
-      margin: EdgeInsets.only(
-        left: 16.h,
-        right: 16.h,
-        bottom: 50.v,
       ),
     );
   }

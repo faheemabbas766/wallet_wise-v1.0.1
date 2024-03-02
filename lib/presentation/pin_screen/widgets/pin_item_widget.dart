@@ -4,15 +4,8 @@ import 'package:wallet_wise/core/app_export.dart';
 
 // ignore: must_be_immutable
 class PinItemWidget extends StatelessWidget {
-  PinItemWidget(
-    this.pinItemModelObj, {
-    Key? key,
-  }) : super(
-          key: key,
-        );
-
   PinItemModel pinItemModelObj;
-
+  PinItemWidget(this.pinItemModelObj, {Key? key,}) : super(key: key,);
   @override
   Widget build(BuildContext context) {
     return Container(

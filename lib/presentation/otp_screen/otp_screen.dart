@@ -1,7 +1,6 @@
 import 'package:wallet_wise/widgets/app_bar/custom_app_bar.dart';
 import 'package:wallet_wise/widgets/custom_pin_code_text_field.dart';
 import 'package:wallet_wise/widgets/custom_elevated_button.dart';
-import 'models/otp_model.dart';
 import 'package:flutter/material.dart';
 import 'package:wallet_wise/core/app_export.dart';
 import 'provider/otp_provider.dart';
@@ -35,14 +34,14 @@ class OtpScreenState extends State<OtpScreen> {
         extendBody: true,
         extendBodyBehindAppBar: true,
         resizeToAvoidBottomInset: false,
-        appBar: _buildAppBar(context),
+        appBar: AppBar(backgroundColor: Colors.transparent,),
         body: Container(
           width: SizeUtils.width,
           height: SizeUtils.height,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              begin: Alignment(0.5, 0),
-              end: Alignment(0.5, 1),
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
               colors: [
                 appTheme.yellow800,
                 appTheme.black90001,
@@ -54,6 +53,7 @@ class OtpScreenState extends State<OtpScreen> {
             padding: EdgeInsets.symmetric(horizontal: 16.h),
             child: Column(
               children: [
+                SizedBox(height: 120,),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Container(
@@ -77,6 +77,7 @@ class OtpScreenState extends State<OtpScreen> {
                   builder: (context, otpController, child) {
                     return CustomPinCodeTextField(
                       context: context,
+                      hintStyle: TextStyle(color: Colors.black),
                       controller: otpController,
                       onChanged: (value) {
                         otpController?.text = value;
@@ -86,6 +87,9 @@ class OtpScreenState extends State<OtpScreen> {
                 ),
                 SizedBox(height: 29.v),
                 CustomElevatedButton(
+                  onPressed: (){
+                    Navigator.of(context).pushNamed(AppRoutes.accountSetupScreen);
+                  },
                   height: 40.v,
                   width: 200.h,
                   text: "lbl_verify".tr,
@@ -116,40 +120,6 @@ class OtpScreenState extends State<OtpScreen> {
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  /// Section Widget
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return CustomAppBar(
-      leadingWidth: double.maxFinite,
-      leading: Container(
-        height: 14.adaptSize,
-        width: 14.adaptSize,
-        margin: EdgeInsets.fromLTRB(21.h, 21.v, 340.h, 21.v),
-        child: Stack(
-          alignment: Alignment.centerLeft,
-          children: [
-            CustomImageView(
-              imagePath: ImageConstant.imgVectorPrimary,
-              height: 3.v,
-              width: 14.h,
-              alignment: Alignment.bottomCenter,
-              margin: EdgeInsets.only(
-                top: 7.v,
-                bottom: 4.v,
-              ),
-            ),
-            CustomImageView(
-              imagePath: ImageConstant.imgVectorPrimary14x7,
-              height: 14.v,
-              width: 7.h,
-              alignment: Alignment.centerLeft,
-              margin: EdgeInsets.only(right: 7.h),
-            ),
-          ],
         ),
       ),
     );
