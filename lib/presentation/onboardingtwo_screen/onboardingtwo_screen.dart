@@ -18,12 +18,6 @@ class OnboardingtwoScreen extends StatefulWidget {
 
   @override
   OnboardingtwoScreenState createState() => OnboardingtwoScreenState();
-  static Widget builder(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => OnboardingtwoProvider(),
-      child: OnboardingtwoScreen(),
-    );
-  }
 }
 
 class OnboardingtwoScreenState extends State<OnboardingtwoScreen> {
@@ -71,25 +65,6 @@ class OnboardingtwoScreenState extends State<OnboardingtwoScreen> {
                           ),
                         );
                       },
-                    ),
-                    SizedBox(height: 33.v),
-                    CustomElevatedButton(
-                      onPressed: (){
-                        Navigator.of(context).pushNamed(AppRoutes.signupScreen);
-                      },
-                      text: "lbl_sign_up".tr,
-                      margin: EdgeInsets.only(left: 8.h),
-                      buttonStyle: CustomButtonStyles.outlineLime,
-                    ),
-                    SizedBox(height: 16.v),
-                    CustomElevatedButton(
-                      text: "lbl_login".tr,
-                      onPressed: (){
-                        Navigator.of(context).pushNamed(AppRoutes.loginScreen);
-                      },
-                      margin: EdgeInsets.only(left: 8.h),
-                      buttonStyle: CustomButtonStyles.fillLime,
-                      buttonTextStyle: CustomTextStyles.titleMediumYellow800,
                     ),
                   ],
                 ),

@@ -226,6 +226,7 @@ class CustomTextStyles {
       theme.textTheme.headlineSmall!.copyWith(
         color: appTheme.whiteA700,
         fontWeight: FontWeight.w200,
+        fontSize: 20,
       );
   static get headlineSmallWhiteA700_1 =>
       theme.textTheme.headlineSmall!.copyWith(

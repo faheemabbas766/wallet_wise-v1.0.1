@@ -8,6 +8,7 @@ import '../models/splashscreen_model.dart';
 /// current splashscreenModelObj
 class SplashscreenProvider extends ChangeNotifier {
   SplashscreenModel splashscreenModelObj = SplashscreenModel();
+  int sliderIndex = 0;
 
   @override
   void dispose() {

@@ -1,5 +1,14 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:wallet_wise/core/app_export.dart';
+import 'package:wallet_wise/presentation/onboardingone_screen/onboardingone_screen.dart';
+import 'package:wallet_wise/presentation/onboardingthree_screen/onboardingthree_screen.dart';
+import 'package:wallet_wise/presentation/onboardingtwo_screen/onboardingtwo_screen.dart';
+import '../../widgets/custom_elevated_button.dart';
+import '../onboardingone_screen/models/takefullcontrol_item_model.dart';
+import '../onboardingone_screen/provider/onboardingone_provider.dart';
+import '../onboardingone_screen/widgets/takefullcontrol_item_widget.dart';
 import 'provider/splashscreen_provider.dart';
 
 class SplashscreenScreen extends StatefulWidget {
@@ -10,12 +19,6 @@ class SplashscreenScreen extends StatefulWidget {
 
   @override
   SplashscreenScreenState createState() => SplashscreenScreenState();
-  static Widget builder(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => SplashscreenProvider(),
-      child: SplashscreenScreen(),
-    );
-  }
 }
 
 class SplashscreenScreenState extends State<SplashscreenScreen> {
@@ -24,9 +27,11 @@ class SplashscreenScreenState extends State<SplashscreenScreen> {
     super.initState();
     navigateToNextScreen();
   }
+
   void navigateToNextScreen() {
     Future.delayed(Duration(seconds: 1), () {
-      Navigator.of(context).pushReplacementNamed(AppRoutes.onboardingoneScreen);
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => PageChange()));
     });
   }
 
@@ -80,7 +85,7 @@ class SplashscreenScreenState extends State<SplashscreenScreen> {
             alignment: Alignment.centerLeft,
             child: Container(
               height: 102.v,
-              width: 112.h,
+              width: 500.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(56),
                 boxShadow: [
@@ -112,6 +117,87 @@ class SplashscreenScreenState extends State<SplashscreenScreen> {
               textAlign: TextAlign.left,
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class PageChange extends StatefulWidget {
+  @override
+  State<PageChange> createState() => _PageChangeState();
+}
+
+class _PageChangeState extends State<PageChange> {
+  PageController controller = PageController();
+
+  //SplashscreenProvider? provider;
+  // bool isFirstTime = false;
+  // @override
+  // void didChangeDependencies() {
+  //   if (isFirstTime) {
+  //     provider = Provider.of<SplashscreenProvider>(context);
+  //   }
+  //   super.didChangeDependencies();
+  // }
+
+  int sliderIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Expanded(
+          child: PageView(
+            allowImplicitScrolling: true,
+            children: [
+              OnboardingoneScreen(),
+              OnboardingtwoScreen(),
+              OnboardingthreeScreen(),
+            ],
+            scrollDirection: Axis.horizontal,
+            controller: controller,
+            onPageChanged: (num) {
+              setState(() {
+                sliderIndex = num;
+              });
+            },
+          ),
+        ),
+      ),
+      bottomSheet: _buildSignUp(context),
+    );
+  }
+
+  Widget _buildSignUp(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      height: 180,
+      padding: EdgeInsets.symmetric(
+        horizontal: 12.h,
+        vertical: 8.v,
+      ),
+      child: Column(
+        children: [
+          CustomElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(AppRoutes.signupScreen);
+            },
+            text: "lbl_sign_up".tr,
+            margin: EdgeInsets.only(left: 8.h),
+            buttonStyle: CustomButtonStyles.outlineLime,
+          ),
+          SizedBox(height: 16.v),
+          CustomElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(AppRoutes.loginScreen);
+            },
+            text: "lbl_login".tr,
+            margin: EdgeInsets.only(left: 8.h),
+            buttonStyle: CustomButtonStyles.fillLime,
+            buttonTextStyle: CustomTextStyles.titleMediumYellow800,
+          ),
+          SizedBox(height: 5.v),
         ],
       ),
     );

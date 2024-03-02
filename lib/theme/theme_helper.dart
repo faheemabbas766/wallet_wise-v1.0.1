@@ -287,7 +287,7 @@ class PrimaryColors {
   Color get whiteA700 => Color(0XFFFFFFFF);
 
   // Yellow
-  Color get yellow800 => Color(0XFFE9AB17);
+  Color get yellow800 => Colors.yellow.shade800;
 }
 
 PrimaryColors get appTheme => ThemeHelper().themeColor();

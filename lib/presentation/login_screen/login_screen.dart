@@ -193,20 +193,23 @@ class LoginScreenState extends State<LoginScreen> {
                       Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
-                          onPressed: (){
-                            Navigator.of(context).pushNamed(AppRoutes.forgotPasswordScreen);
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pushNamed(AppRoutes.forgotPasswordScreen);
                           },
                           child: Text(
                             "msg_forgot_your_password".tr,
-                            style: CustomTextStyles.labelLargeNunitoSansWhiteA700,
+                            style:
+                                CustomTextStyles.labelLargeNunitoSansWhiteA700,
                           ),
                         ),
                       ),
                       SizedBox(height: 50.v),
                       CustomElevatedButton(
-                        onPressed: (){
-                        Navigator.of(context).pushNamed(AppRoutes.homepageContainerScreen);
-                      },
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushNamed(AppRoutes.homepageContainerScreen);
+                        },
                         height: 40.v,
                         width: 200.h,
                         text: "lbl_login".tr,

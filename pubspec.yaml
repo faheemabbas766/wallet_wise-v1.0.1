@@ -23,6 +23,7 @@ dependencies:
   intl: ^0.18.0
   cloud_firestore: ^4.15.6
   firebase_core:
+  radial_button: ^1.0.1
 
 
 dev_dependencies: 

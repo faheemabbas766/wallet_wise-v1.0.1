@@ -18,12 +18,6 @@ class OnboardingthreeScreen extends StatefulWidget {
 
   @override
   OnboardingthreeScreenState createState() => OnboardingthreeScreenState();
-  static Widget builder(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => OnboardingthreeProvider(),
-      child: OnboardingthreeScreen(),
-    );
-  }
 }
 
 class OnboardingthreeScreenState extends State<OnboardingthreeScreen> {
@@ -71,25 +65,6 @@ class OnboardingthreeScreenState extends State<OnboardingthreeScreen> {
                           ),
                         );
                       },
-                    ),
-                    SizedBox(height: 33.v),
-                    CustomElevatedButton(
-                      text: "lbl_sign_up".tr,
-                      margin: EdgeInsets.only(left: 8.h),
-                      buttonStyle: CustomButtonStyles.outlineLime,
-                      onPressed: (){
-                        Navigator.of(context).pushNamed(AppRoutes.signupScreen);
-                      },
-                    ),
-                    SizedBox(height: 16.v),
-                    CustomElevatedButton(
-                      text: "lbl_login".tr,
-                      onPressed: (){
-                        Navigator.of(context).pushNamed(AppRoutes.loginScreen);
-                      },
-                      margin: EdgeInsets.only(left: 8.h),
-                      buttonStyle: CustomButtonStyles.fillLime,
-                      buttonTextStyle: CustomTextStyles.titleMediumYellow800,
                     ),
                   ],
                 ),
