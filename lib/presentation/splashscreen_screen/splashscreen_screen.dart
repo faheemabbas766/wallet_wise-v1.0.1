@@ -1,4 +1,3 @@
-import 'models/splashscreen_model.dart';
 import 'package:flutter/material.dart';
 import 'package:wallet_wise/core/app_export.dart';
 import 'provider/splashscreen_provider.dart';
@@ -23,6 +22,12 @@ class SplashscreenScreenState extends State<SplashscreenScreen> {
   @override
   void initState() {
     super.initState();
+    navigateToNextScreen();
+  }
+  void navigateToNextScreen() {
+    Future.delayed(Duration(seconds: 1), () {
+      Navigator.of(context).pushReplacementNamed(AppRoutes.onboardingoneScreen);
+    });
   }
 
   @override
@@ -72,6 +77,24 @@ class SplashscreenScreenState extends State<SplashscreenScreen> {
         alignment: Alignment.centerLeft,
         children: [
           Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              height: 102.v,
+              width: 112.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(56),
+                boxShadow: [
+                  BoxShadow(
+                    color: appTheme.yellow800.withOpacity(0.37),
+                    blurRadius: 10, // Adjust the blur radius as needed
+                    spreadRadius: 5, // Set spread radius to 0 for no spreading
+                    offset: Offset(0, 0), // Offset of the shadow
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Align(
             alignment: Alignment.centerRight,
             child: RichText(
               text: TextSpan(
@@ -87,19 +110,6 @@ class SplashscreenScreenState extends State<SplashscreenScreen> {
                 ],
               ),
               textAlign: TextAlign.left,
-            ),
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              height: 102.v,
-              width: 112.h,
-              decoration: BoxDecoration(
-                color: appTheme.yellow800.withOpacity(0.57),
-                borderRadius: BorderRadius.circular(
-                  56.h,
-                ),
-              ),
             ),
           ),
         ],

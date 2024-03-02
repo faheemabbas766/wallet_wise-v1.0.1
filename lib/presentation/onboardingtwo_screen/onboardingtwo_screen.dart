@@ -74,6 +74,9 @@ class OnboardingtwoScreenState extends State<OnboardingtwoScreen> {
                     ),
                     SizedBox(height: 33.v),
                     CustomElevatedButton(
+                      onPressed: (){
+                        Navigator.of(context).pushReplacementNamed(AppRoutes.signupScreen);
+                      },
                       text: "lbl_sign_up".tr,
                       margin: EdgeInsets.only(left: 8.h),
                       buttonStyle: CustomButtonStyles.outlineLime,

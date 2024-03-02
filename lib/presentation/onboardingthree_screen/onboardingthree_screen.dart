@@ -77,6 +77,9 @@ class OnboardingthreeScreenState extends State<OnboardingthreeScreen> {
                       text: "lbl_sign_up".tr,
                       margin: EdgeInsets.only(left: 8.h),
                       buttonStyle: CustomButtonStyles.outlineLime,
+                      onPressed: (){
+                        Navigator.of(context).pushReplacementNamed(AppRoutes.signupScreen);
+                      },
                     ),
                     SizedBox(height: 16.v),
                     CustomElevatedButton(

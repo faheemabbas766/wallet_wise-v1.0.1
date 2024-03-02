@@ -90,8 +90,7 @@ class AppRoutes {
 
   static const String statisticsPage = '/statistics_page';
 
-  static const String statisticsTabContainerScreen =
-      '/statistics_tab_container_screen';
+  static const String statisticsTabContainerScreen = '/statistics_tab_container_screen';
 
   static const String transactionDetailsScreen = '/transaction_details_screen';
 
@@ -193,6 +192,6 @@ class AppRoutes {
         settingsNotificationScreen: SettingsNotificationScreen.builder,
         profileCustomerSupportScreen: ProfileCustomerSupportScreen.builder,
         appNavigationScreen: AppNavigationScreen.builder,
-        initialRoute: ProfileSettingsScreen.builder
+        initialRoute: SplashscreenScreen.builder
       };
 }
