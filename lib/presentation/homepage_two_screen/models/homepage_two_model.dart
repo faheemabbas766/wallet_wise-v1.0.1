@@ -1,0 +1,3 @@
+import '../../../core/app_export.dart';import 'homepagetwo_item_model.dart';class HomepageTwoModel {List<HomepagetwoItemModel> homepagetwoItemList = [HomepagetwoItemModel(iconButton:ImageConstant.imgMagiconsGlyphEcommerce,shopping: "Shopping",boughtDress: "Bought Dress",rs: "- Rs 5850",time: "11:00 am"),HomepagetwoItemModel(iconButton:ImageConstant.imgClose51x50,shopping: "Transfer",boughtDress: "Amount sent to Sarah",rs: "- Rs 1000",time: "03:00 pm"),HomepagetwoItemModel(iconButton:ImageConstant.imgMagiconsGlyphPrimary51x50,shopping: "Income",boughtDress: "Upwork Payment",rs: "+ Rs 2850",time: "10:00 am"),HomepagetwoItemModel(iconButton:ImageConstant.imgUserGray50)];
+
+ }
