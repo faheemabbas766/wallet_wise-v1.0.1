@@ -1,5 +1,4 @@
 import 'package:wallet_wise/core/utils/validation_functions.dart';
-import 'package:wallet_wise/presentation/login_screen/login_screen.dart';
 import 'package:wallet_wise/widgets/custom_text_form_field.dart';
 import 'package:wallet_wise/widgets/custom_elevated_button.dart';
 import 'models/signup_model.dart';
@@ -15,7 +14,6 @@ class SignupScreen extends StatefulWidget {
 
   @override
   SignupScreenState createState() => SignupScreenState();
-
   static Widget builder(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => SignupProvider(),
@@ -44,11 +42,11 @@ class SignupScreenState extends State<SignupScreen> {
           height: SizeUtils.height,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              begin: Alignment(0.5, 0),
-              end: Alignment(0.5, 1),
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
               colors: [
-                Color(0xffE9AB17),
-                Colors.black,
+                appTheme.yellow800,
+                theme.colorScheme.primary.withOpacity(1),
               ],
             ),
           ),
@@ -67,7 +65,7 @@ class SignupScreenState extends State<SignupScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 30.v),
+                    SizedBox(height: 77.v),
                     Align(
                       alignment: Alignment.center,
                       child: RichText(
@@ -86,13 +84,17 @@ class SignupScreenState extends State<SignupScreen> {
                         textAlign: TextAlign.left,
                       ),
                     ),
-                    SizedBox(height: 35.v),
-                    Text(
-                      "lbl_get_started".tr,
-                      maxLines: 1,
-                      style: CustomTextStyles.headlineMediumWhiteA700,
+                    SizedBox(height: 18.v),
+                    SizedBox(
+                      width: 156.h,
+                      child: Text(
+                        "lbl_get_started".tr,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: CustomTextStyles.headlineMediumWhiteA700,
+                      ),
                     ),
-                    SizedBox(height: 1.v),
+                    SizedBox(height: 10.v),
                     Padding(
                       padding: EdgeInsets.only(left: 3.h),
                       child: Text(
@@ -101,7 +103,7 @@ class SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     _buildName(context),
-                    SizedBox(height: 9.v),
+                    SizedBox(height: 10.v),
                     Padding(
                       padding: EdgeInsets.only(left: 3.h),
                       child: Text(
@@ -114,7 +116,7 @@ class SignupScreenState extends State<SignupScreen> {
                     _buildFour(context),
                     SizedBox(height: 10.v),
                     _buildFour1(context),
-                    SizedBox(height: 11.v),
+                    SizedBox(height: 10.v),
                     Padding(
                       padding: EdgeInsets.only(left: 3.h),
                       child: Text(
@@ -153,21 +155,15 @@ class SignupScreenState extends State<SignupScreen> {
                             style: CustomTextStyles.bodyMediumNotoSansWhiteA700,
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 19.h),
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => LoginScreen()));
+                            padding: EdgeInsets.only(left: 10.h),
+                            child: TextButton(
+                              onPressed: (){
+                                Navigator.of(context).pushNamed(AppRoutes.loginScreen);
                               },
                               child: Text(
                                 "lbl_log_in2".tr,
                                 style: CustomTextStyles
-                                    .titleSmallNotoSansYellow800
-                                    .copyWith(
-                                  decoration: TextDecoration.underline,
-                                ),
+                                    .titleSmallNotoSansYellow800,
                               ),
                             ),
                           ),
@@ -238,7 +234,7 @@ class SignupScreenState extends State<SignupScreen> {
   /// Section Widget
   Widget _buildFour(BuildContext context) {
     return SizedBox(
-      height: 56.v,
+      height: 66.v,
       width: 351.h,
       child: Stack(
         alignment: Alignment.bottomCenter,
@@ -288,7 +284,7 @@ class SignupScreenState extends State<SignupScreen> {
   /// Section Widget
   Widget _buildFour1(BuildContext context) {
     return SizedBox(
-      height: 56.v,
+      height: 66.v,
       width: 351.h,
       child: Stack(
         alignment: Alignment.bottomCenter,
@@ -296,11 +292,9 @@ class SignupScreenState extends State<SignupScreen> {
           Align(
             alignment: Alignment.topLeft,
             child: Container(
-              width: 38.h,
               margin: EdgeInsets.only(left: 3.h),
               child: Text(
                 "lbl_country".tr,
-                maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: CustomTextStyles.titleMediumNotoSansWhiteA700,
               ),

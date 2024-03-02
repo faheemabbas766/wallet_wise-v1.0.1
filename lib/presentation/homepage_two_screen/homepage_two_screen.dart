@@ -6,7 +6,6 @@ import 'package:wallet_wise/widgets/app_bar/appbar_trailing_iconbutton.dart';
 import 'package:wallet_wise/widgets/custom_elevated_button.dart';
 import 'widgets/homepagetwo_item_widget.dart';
 import 'models/homepagetwo_item_model.dart';
-import 'models/homepage_two_model.dart';
 import 'package:wallet_wise/widgets/custom_bottom_app_bar.dart';
 import 'package:wallet_wise/widgets/custom_floating_button.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;

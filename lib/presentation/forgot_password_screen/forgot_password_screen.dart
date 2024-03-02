@@ -2,7 +2,6 @@ import 'package:wallet_wise/widgets/app_bar/custom_app_bar.dart';
 import 'package:wallet_wise/core/utils/validation_functions.dart';
 import 'package:wallet_wise/widgets/custom_text_form_field.dart';
 import 'package:wallet_wise/widgets/custom_elevated_button.dart';
-import 'models/forgot_password_model.dart';
 import 'package:flutter/material.dart';
 import 'package:wallet_wise/core/app_export.dart';
 import 'provider/forgot_password_provider.dart';
@@ -38,14 +37,16 @@ class ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         extendBody: true,
         extendBodyBehindAppBar: true,
         resizeToAvoidBottomInset: false,
-        appBar: _buildAppBar(context),
+        appBar: AppBar(
+          backgroundColor:Colors.transparent,
+        ),
         body: Container(
           width: SizeUtils.width,
           height: SizeUtils.height,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              begin: Alignment(0.5, 0),
-              end: Alignment(0.5, 1),
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
               colors: [
                 appTheme.yellow800,
                 theme.colorScheme.onErrorContainer,
@@ -62,7 +63,7 @@ class ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 width: double.maxFinite,
                 padding: EdgeInsets.symmetric(
                   horizontal: 7.h,
-                  vertical: 2.v,
+                  vertical: 100.v,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -113,6 +114,7 @@ class ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         return CustomTextFormField(
                           controller: emailController,
                           hintText: "lbl_enter_email".tr,
+                          hintStyle: TextStyle(color: Colors.black),
                           textInputAction: TextInputAction.done,
                           textInputType: TextInputType.emailAddress,
                           validator: (value) {
@@ -123,12 +125,15 @@ class ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             return null;
                           },
                           borderDecoration: TextFormFieldStyleHelper.fillYellow,
-                          fillColor: appTheme.yellow800.withOpacity(0.57),
+                          fillColor: appTheme.yellow800.withOpacity(0.47),
                         );
                       },
                     ),
                     SizedBox(height: 55.v),
                     CustomElevatedButton(
+                      onPressed: (){
+                        Navigator.of(context).pushNamed(AppRoutes.emailSentScreen);
+                      },
                       height: 49.v,
                       width: 244.h,
                       text: "lbl_continue".tr,
@@ -153,13 +158,15 @@ class ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                           ),
                           Padding(
                             padding: EdgeInsets.only(left: 9.h),
-                            child: Text(
-                              "lbl_login".tr,
-                              style: CustomTextStyles
-                                  .titleSmallNotoSansYellow800SemiBold
-                                  .copyWith(
-                                decoration: TextDecoration.underline,
-                              ),
+                            child: TextButton(
+
+                              onPressed: (){
+                                Navigator.of(context).pushNamed(AppRoutes.loginScreen);
+                              },
+                              child: Text(
+                                "lbl_login".tr,
+                                style: CustomTextStyles
+                                    .titleSmallNotoSansYellow800SemiBold),
                             ),
                           ),
                         ],
@@ -171,40 +178,6 @@ class ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               ),
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  /// Section Widget
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return CustomAppBar(
-      leadingWidth: double.maxFinite,
-      leading: Container(
-        height: 14.adaptSize,
-        width: 14.adaptSize,
-        margin: EdgeInsets.fromLTRB(21.h, 21.v, 340.h, 21.v),
-        child: Stack(
-          alignment: Alignment.centerLeft,
-          children: [
-            CustomImageView(
-              imagePath: ImageConstant.imgVectorPrimary,
-              height: 3.v,
-              width: 14.h,
-              alignment: Alignment.bottomCenter,
-              margin: EdgeInsets.only(
-                top: 7.v,
-                bottom: 4.v,
-              ),
-            ),
-            CustomImageView(
-              imagePath: ImageConstant.imgVectorPrimary14x7,
-              height: 14.v,
-              width: 7.h,
-              alignment: Alignment.centerLeft,
-              margin: EdgeInsets.only(right: 7.h),
-            ),
-          ],
         ),
       ),
     );

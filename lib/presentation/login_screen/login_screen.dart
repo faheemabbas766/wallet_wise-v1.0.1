@@ -42,11 +42,11 @@ class LoginScreenState extends State<LoginScreen> {
           height: SizeUtils.height,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              begin: Alignment(0.5, 0),
-              end: Alignment(0.5, 1),
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
               colors: [
                 appTheme.yellow800,
-                theme.colorScheme.primary.withOpacity(0),
+                theme.colorScheme.primary.withOpacity(1),
               ],
             ),
           ),
@@ -192,13 +192,21 @@ class LoginScreenState extends State<LoginScreen> {
                       SizedBox(height: 6.v),
                       Align(
                         alignment: Alignment.centerRight,
-                        child: Text(
-                          "msg_forgot_your_password".tr,
-                          style: CustomTextStyles.labelLargeNunitoSansWhiteA700,
+                        child: TextButton(
+                          onPressed: (){
+                            Navigator.of(context).pushNamed(AppRoutes.forgotPasswordScreen);
+                          },
+                          child: Text(
+                            "msg_forgot_your_password".tr,
+                            style: CustomTextStyles.labelLargeNunitoSansWhiteA700,
+                          ),
                         ),
                       ),
                       SizedBox(height: 50.v),
                       CustomElevatedButton(
+                        onPressed: (){
+                        Navigator.of(context).pushNamed(AppRoutes.homepageContainerScreen);
+                      },
                         height: 40.v,
                         width: 200.h,
                         text: "lbl_login".tr,
