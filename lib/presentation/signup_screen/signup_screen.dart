@@ -1,4 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:wallet_wise/core/utils/validation_functions.dart';
+import 'package:wallet_wise/utils/firebase_db.dart';
 import 'package:wallet_wise/widgets/custom_text_form_field.dart';
 import 'package:wallet_wise/widgets/custom_elevated_button.dart';
 import 'models/signup_model.dart';
@@ -32,152 +34,156 @@ class SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        extendBody: true,
-        extendBodyBehindAppBar: true,
-        resizeToAvoidBottomInset: false,
-        body: Container(
-          width: SizeUtils.width,
-          height: SizeUtils.height,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                appTheme.yellow800,
-                theme.colorScheme.primary.withOpacity(1),
-              ],
+    return Consumer<SignupProvider>(builder: (context, provider, child) {
+      return SafeArea(
+        child: Scaffold(
+          extendBody: true,
+          extendBodyBehindAppBar: true,
+          resizeToAvoidBottomInset: false,
+          body: Container(
+            width: SizeUtils.width,
+            height: SizeUtils.height,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  appTheme.yellow800,
+                  theme.colorScheme.primary.withOpacity(1),
+                ],
+              ),
             ),
-          ),
-          child: SingleChildScrollView(
-            padding: EdgeInsets.only(
-              bottom: MediaQuery.of(context).viewInsets.bottom,
-            ),
-            child: Form(
-              key: _formKey,
-              child: Container(
-                width: double.maxFinite,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 12.h,
-                  vertical: 25.v,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 77.v),
-                    Align(
-                      alignment: Alignment.center,
-                      child: RichText(
-                        text: TextSpan(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+              ),
+              child: Form(
+                key: _formKey,
+                child: Container(
+                  width: double.maxFinite,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.h,
+                    vertical: 25.v,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 77.v),
+                      Align(
+                        alignment: Alignment.center,
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: "lbl_wallet".tr,
+                                style: CustomTextStyles.displaySmallffffffff,
+                              ),
+                              TextSpan(
+                                text: "lbl_wise".tr,
+                                style: CustomTextStyles.displaySmallffe9ab17,
+                              ),
+                            ],
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ),
+                      SizedBox(height: 18.v),
+                      SizedBox(
+                        width: 156.h,
+                        child: Text(
+                          "lbl_get_started".tr,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: CustomTextStyles.headlineMediumWhiteA700,
+                        ),
+                      ),
+                      SizedBox(height: 10.v),
+                      Padding(
+                        padding: EdgeInsets.only(left: 3.h),
+                        child: Text(
+                          "lbl_name".tr,
+                          style: CustomTextStyles.titleMediumNotoSansWhiteA700,
+                        ),
+                      ),
+                      _buildName(context),
+                      SizedBox(height: 10.v),
+                      Padding(
+                        padding: EdgeInsets.only(left: 3.h),
+                        child: Text(
+                          "lbl_email".tr,
+                          style: CustomTextStyles.titleMediumNotoSansWhiteA700,
+                        ),
+                      ),
+                      _buildEmail(context),
+                      SizedBox(height: 10.v),
+                      _buildFour(context),
+                      SizedBox(height: 10.v),
+                      _buildFour1(context),
+                      SizedBox(height: 10.v),
+                      Padding(
+                        padding: EdgeInsets.only(left: 3.h),
+                        child: Text(
+                          "lbl_city".tr,
+                          style: CustomTextStyles.titleMediumNotoSansWhiteA700,
+                        ),
+                      ),
+                      _buildCity(context),
+                      SizedBox(height: 9.v),
+                      Padding(
+                        padding: EdgeInsets.only(left: 3.h),
+                        child: Text(
+                          "lbl_password".tr,
+                          style: CustomTextStyles.titleMediumNotoSansWhiteA700,
+                        ),
+                      ),
+                      _buildPassword(context),
+                      SizedBox(height: 5.v),
+                      Padding(
+                        padding: EdgeInsets.only(left: 4.h),
+                        child: Text(
+                          "msg_password_must_be".tr,
+                          style: CustomTextStyles.labelLargeNunitoSansWhiteA700,
+                        ),
+                      ),
+                      SizedBox(height: 14.v),
+                      _buildSignUp(context, provider),
+                      SizedBox(height: 18.v),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            TextSpan(
-                              text: "lbl_wallet".tr,
-                              style: CustomTextStyles.displaySmallffffffff,
+                            Text(
+                              "msg_already_have_an".tr,
+                              style:
+                                  CustomTextStyles.bodyMediumNotoSansWhiteA700,
                             ),
-                            TextSpan(
-                              text: "lbl_wise".tr,
-                              style: CustomTextStyles.displaySmallffe9ab17,
+                            Padding(
+                              padding: EdgeInsets.only(left: 10.h),
+                              child: TextButton(
+                                onPressed: () {
+                                  Navigator.of(context)
+                                      .pushNamed(AppRoutes.loginScreen);
+                                },
+                                child: Text(
+                                  "lbl_log_in2".tr,
+                                  style: CustomTextStyles
+                                      .titleSmallNotoSansYellow800,
+                                ),
+                              ),
                             ),
                           ],
                         ),
-                        textAlign: TextAlign.left,
                       ),
-                    ),
-                    SizedBox(height: 18.v),
-                    SizedBox(
-                      width: 156.h,
-                      child: Text(
-                        "lbl_get_started".tr,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: CustomTextStyles.headlineMediumWhiteA700,
-                      ),
-                    ),
-                    SizedBox(height: 10.v),
-                    Padding(
-                      padding: EdgeInsets.only(left: 3.h),
-                      child: Text(
-                        "lbl_name".tr,
-                        style: CustomTextStyles.titleMediumNotoSansWhiteA700,
-                      ),
-                    ),
-                    _buildName(context),
-                    SizedBox(height: 10.v),
-                    Padding(
-                      padding: EdgeInsets.only(left: 3.h),
-                      child: Text(
-                        "lbl_email".tr,
-                        style: CustomTextStyles.titleMediumNotoSansWhiteA700,
-                      ),
-                    ),
-                    _buildEmail(context),
-                    SizedBox(height: 10.v),
-                    _buildFour(context),
-                    SizedBox(height: 10.v),
-                    _buildFour1(context),
-                    SizedBox(height: 10.v),
-                    Padding(
-                      padding: EdgeInsets.only(left: 3.h),
-                      child: Text(
-                        "lbl_city".tr,
-                        style: CustomTextStyles.titleMediumNotoSansWhiteA700,
-                      ),
-                    ),
-                    _buildCity(context),
-                    SizedBox(height: 9.v),
-                    Padding(
-                      padding: EdgeInsets.only(left: 3.h),
-                      child: Text(
-                        "lbl_password".tr,
-                        style: CustomTextStyles.titleMediumNotoSansWhiteA700,
-                      ),
-                    ),
-                    _buildPassword(context),
-                    SizedBox(height: 5.v),
-                    Padding(
-                      padding: EdgeInsets.only(left: 4.h),
-                      child: Text(
-                        "msg_password_must_be".tr,
-                        style: CustomTextStyles.labelLargeNunitoSansWhiteA700,
-                      ),
-                    ),
-                    SizedBox(height: 14.v),
-                    _buildSignUp(context),
-                    SizedBox(height: 18.v),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "msg_already_have_an".tr,
-                            style: CustomTextStyles.bodyMediumNotoSansWhiteA700,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 10.h),
-                            child: TextButton(
-                              onPressed: (){
-                                Navigator.of(context).pushNamed(AppRoutes.loginScreen);
-                              },
-                              child: Text(
-                                "lbl_log_in2".tr,
-                                style: CustomTextStyles
-                                    .titleSmallNotoSansYellow800,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   /// Section Widget
@@ -386,7 +392,7 @@ class SignupScreenState extends State<SignupScreen> {
   }
 
   /// Section Widget
-  Widget _buildSignUp(BuildContext context) {
+  Widget _buildSignUp(BuildContext context, SignupProvider provider) {
     return CustomElevatedButton(
       height: 34.v,
       width: 179.h,
@@ -394,6 +400,9 @@ class SignupScreenState extends State<SignupScreen> {
       buttonStyle: CustomButtonStyles.fillYellow,
       buttonTextStyle: CustomTextStyles.titleSmallPoppinsPrimary,
       alignment: Alignment.center,
+      onPressed: () {
+        provider.signup();
+      },
     );
   }
 }
