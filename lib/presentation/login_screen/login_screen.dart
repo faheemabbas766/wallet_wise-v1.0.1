@@ -206,7 +206,7 @@ class LoginScreenState extends State<LoginScreen> {
                       CustomElevatedButton(
                         onPressed: (){
                         Navigator.of(context).pushNamed(AppRoutes.homepageContainerScreen);
-                      },
+                        },
                         height: 40.v,
                         width: 200.h,
                         text: "lbl_login".tr,

@@ -1,12 +1,12 @@
 name: wallet_wise
 description: A new Flutter project.
 version: 1.0.0+1
-environment: 
+environment:
   sdk: '>=2.12.0 <3.0.0'
-dependencies: 
-  flutter: 
+dependencies:
+  flutter:
     sdk: flutter
-  flutter_localizations: 
+  flutter_localizations:
     sdk: flutter
   provider: ^6.1.1
   cached_network_image: ^3.3.0
@@ -21,17 +21,22 @@ dependencies:
   dotted_border: ^2.1.0
   google_maps_flutter: ^2.5.0
   intl: ^0.18.0
-dev_dependencies: 
-  flutter_test: 
+  cloud_firestore: ^4.15.6
+  firebase_core:
+  radial_button: ^1.0.1
+
+
+dev_dependencies:
+  flutter_test:
     sdk: flutter
-flutter: 
+flutter:
   uses-material-design: true
-  assets: 
+  assets:
     - assets/
     - assets/images/
-  fonts: 
+  fonts:
     - family: Inter
-      fonts: 
+      fonts:
         - asset: assets/fonts/InterExtraBold.ttf
           weight: 800
         - asset: assets/fonts/InterMedium.ttf
@@ -47,15 +52,15 @@ flutter:
         - asset: assets/fonts/InterExtraLight.ttf
           weight: 200
     - family: DM Sans
-      fonts: 
+      fonts:
         - asset: assets/fonts/DMSansRegular.ttf
           weight: 400
     - family: Noto Sans Javanese
-      fonts: 
+      fonts:
         - asset: assets/fonts/NotoSansJavaneseBold.ttf
           weight: 700
     - family: Noto Sans
-      fonts: 
+      fonts:
         - asset: assets/fonts/NotoSansMedium.ttf
           weight: 500
         - asset: assets/fonts/NotoSansRegular.ttf
@@ -65,19 +70,19 @@ flutter:
         - asset: assets/fonts/NotoSansSemiBold.ttf
           weight: 600
     - family: Nunito Sans
-      fonts: 
+      fonts:
         - asset: assets/fonts/NunitoSansRegular.ttf
           weight: 400
         - asset: assets/fonts/NunitoSansSemiBold.ttf
           weight: 600
     - family: Poppins
-      fonts: 
+      fonts:
         - asset: assets/fonts/PoppinsSemiBold.ttf
           weight: 600
         - asset: assets/fonts/PoppinsRegular.ttf
           weight: 400
     - family: IBM Plex Mono
-      fonts: 
+      fonts:
         - asset: assets/fonts/IBMPlexMonoSemiBold.ttf
           weight: 600
         - asset: assets/fonts/IBMPlexMonoBold.ttf
@@ -85,6 +90,6 @@ flutter:
         - asset: assets/fonts/IBMPlexMono.ttf
           weight: 400
     - family: Open Sans
-      fonts: 
+      fonts:
         - asset: assets/fonts/OpenSansRomanRegular.ttf
           weight: 400

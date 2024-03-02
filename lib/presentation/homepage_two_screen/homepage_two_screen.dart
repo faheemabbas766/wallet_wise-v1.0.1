@@ -405,7 +405,6 @@ class HomepageTwoScreenState extends State<HomepageTwoScreen> {
                   Consumer<HomepageTwoProvider>(
                     builder: (context, provider, child) {
                       return ListView.separated(
-                        physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         separatorBuilder: (
                           context,

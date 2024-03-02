@@ -1,4 +1,3 @@
-import 'package:wallet_wise/widgets/app_bar/custom_app_bar.dart';
 import 'package:wallet_wise/core/utils/validation_functions.dart';
 import 'package:wallet_wise/widgets/custom_text_form_field.dart';
 import 'package:wallet_wise/widgets/custom_elevated_button.dart';
