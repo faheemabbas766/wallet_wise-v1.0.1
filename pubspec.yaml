@@ -21,6 +21,10 @@ dependencies:
   dotted_border: ^2.1.0
   google_maps_flutter: ^2.5.0
   intl: ^0.18.0
+  cloud_firestore: ^4.15.6
+  firebase_core:
+
+
 dev_dependencies: 
   flutter_test: 
     sdk: flutter
