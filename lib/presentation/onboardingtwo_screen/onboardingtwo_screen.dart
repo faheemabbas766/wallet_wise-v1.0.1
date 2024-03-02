@@ -44,28 +44,6 @@ class OnboardingtwoScreenState extends State<OnboardingtwoScreen> {
                   children: [
                     SizedBox(height: 9.v),
                     _buildSeamlessTransfers(context),
-                    SizedBox(height: 28.v),
-                    Consumer<OnboardingtwoProvider>(
-                      builder: (context, provider, child) {
-                        return SizedBox(
-                          height: 16.v,
-                          child: AnimatedSmoothIndicator(
-                            activeIndex: provider.sliderIndex,
-                            count: provider.onboardingtwoModelObj
-                                .seamlesstransfersItemList.length,
-                            axisDirection: Axis.horizontal,
-                            effect: ScrollingDotsEffect(
-                              spacing: 16,
-                              activeDotColor: appTheme.yellow800,
-                              dotColor: appTheme.yellow800.withOpacity(0.57),
-                              activeDotScale: 2.0,
-                              dotHeight: 8.v,
-                              dotWidth: 8.h,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
                   ],
                 ),
               ),

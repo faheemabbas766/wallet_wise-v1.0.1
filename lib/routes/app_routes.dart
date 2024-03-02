@@ -153,6 +153,7 @@ class AppRoutes {
 
   static Map<String, WidgetBuilder> get routes => {
         profileSettingsScreen: ProfileSettingsScreen.builder,
+        splashscreenScreen: SplashscreenScreen.builder,
         loginScreen: LoginScreen.builder,
         signupScreen: SignupScreen.builder,
         otpScreen: OtpScreen.builder,
@@ -189,5 +190,6 @@ class AppRoutes {
         settingsNotificationScreen: SettingsNotificationScreen.builder,
         profileCustomerSupportScreen: ProfileCustomerSupportScreen.builder,
         appNavigationScreen: AppNavigationScreen.builder,
+        initialRoute: SplashscreenScreen.builder
       };
 }

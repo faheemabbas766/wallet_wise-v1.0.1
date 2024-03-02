@@ -19,6 +19,13 @@ class SplashscreenScreen extends StatefulWidget {
 
   @override
   SplashscreenScreenState createState() => SplashscreenScreenState();
+
+  static Widget builder(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (context) => SplashscreenProvider(),
+      child: SplashscreenScreen(),
+    );
+  }
 }
 
 class SplashscreenScreenState extends State<SplashscreenScreen> {
@@ -131,16 +138,6 @@ class PageChange extends StatefulWidget {
 class _PageChangeState extends State<PageChange> {
   PageController controller = PageController();
 
-  //SplashscreenProvider? provider;
-  // bool isFirstTime = false;
-  // @override
-  // void didChangeDependencies() {
-  //   if (isFirstTime) {
-  //     provider = Provider.of<SplashscreenProvider>(context);
-  //   }
-  //   super.didChangeDependencies();
-  // }
-
   int sliderIndex = 0;
 
   @override
@@ -175,10 +172,27 @@ class _PageChangeState extends State<PageChange> {
       height: 180,
       padding: EdgeInsets.symmetric(
         horizontal: 12.h,
-        vertical: 8.v,
+        vertical: 0.v,
       ),
       child: Column(
         children: [
+          SizedBox(
+            height: 16.v,
+            child: AnimatedSmoothIndicator(
+              activeIndex: sliderIndex,
+              count: 3,
+              axisDirection: Axis.horizontal,
+              effect: ScrollingDotsEffect(
+                spacing: 16,
+                activeDotColor: appTheme.yellow800,
+                dotColor: appTheme.yellow800.withOpacity(0.57),
+                activeDotScale: 2.0,
+                dotHeight: 8.v,
+                dotWidth: 8.h,
+              ),
+            ),
+          ),
+          SizedBox(height: 40),
           CustomElevatedButton(
             onPressed: () {
               Navigator.of(context).pushNamed(AppRoutes.signupScreen);

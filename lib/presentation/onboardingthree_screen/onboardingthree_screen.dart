@@ -44,28 +44,6 @@ class OnboardingthreeScreenState extends State<OnboardingthreeScreen> {
                   children: [
                     SizedBox(height: 32.v),
                     _buildPlanWisely(context),
-                    SizedBox(height: 32.v),
-                    Consumer<OnboardingthreeProvider>(
-                      builder: (context, provider, child) {
-                        return SizedBox(
-                          height: 16.v,
-                          child: AnimatedSmoothIndicator(
-                            activeIndex: provider.sliderIndex,
-                            count: provider.onboardingthreeModelObj
-                                .planwiselyItemList.length,
-                            axisDirection: Axis.horizontal,
-                            effect: ScrollingDotsEffect(
-                              spacing: 16,
-                              activeDotColor: appTheme.yellow800,
-                              dotColor: appTheme.yellow800.withOpacity(0.57),
-                              activeDotScale: 2.0,
-                              dotHeight: 8.v,
-                              dotWidth: 8.h,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
                   ],
                 ),
               ),
